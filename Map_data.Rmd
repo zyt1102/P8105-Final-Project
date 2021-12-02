@@ -1,0 +1,15 @@
+---
+title: "Map Data"
+author: "Yiwen Zhao"
+date: "12/1/2021"
+output: github_document
+---
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+read_csv("/Users/zhao/Desktop/P8105-Final-Project/Crimes_-_Map.csv")
+```
+
