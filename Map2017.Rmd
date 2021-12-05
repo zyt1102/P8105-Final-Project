@@ -1,10 +1,15 @@
 ---
-title: "map"
-author: "Shengzhi Luo"
-date: "05/12/2021"
-output: github_document
+title: "**Map**"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme:  flatly
+    css: index.css
+    code_folding: hide
 ---
 
+### **Map: Distribution of Crime Rate From 2016 to 2021 in Chicago**
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -20,19 +25,13 @@ library(magrittr)
 library(readr)
 ```
 
-# Data loading
-
-```{r}
-
+```{r, message=FALSE}
+#data loading
 crime_2017 =
    read.csv("./Data/Crimes_-_2017.csv") %>% 
    drop_na() %>% 
    janitor::clean_names() %>%
    filter(arrest=="true",domestic=="true")
-
-```
-
-```{r}
 
 map2017 = crime_2017 %>%
 leaflet() %>%
@@ -43,5 +42,5 @@ addMarkers(clusterOptions = markerClusterOptions()) %>%
 setView(-87.646918, 41.869871, zoom = 13)
 
 map2017
-
 ```
+
