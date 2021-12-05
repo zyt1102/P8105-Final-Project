@@ -1,23 +1,14 @@
 ---
-title: "Gotham City"
+title: "<center>**Gotham City**<center/>"
 output: 
   html_document:
-    toc: true
-    toc_float: true
+    theme:  flatly
+    css: index.css
 ---
+<center>
 
-<img src="images/Chicago.jpg" style="width:90%">
+##### **Group members: Shengzhi Luo, Minxiu Shi, Yitian Zhang, Yiwen Zhao**
 
-### Motivation
+<img src="images/Chicago2.jpg" style="width:90%">
 
-    Due to the cases that happened in Chicago recently, the crime rates in different areas of Chicago caught our attention. Violent incidents in Chicago are of increasing concern over the last few years, and we are interested in looking at what might be associated with increased violence in Chicago. We are concerned about people’s living safety in the city and motivated to find safer neighborhoods for living in Chicago.
-
-<div class="cd-fixed-bg cd-fixed-bg--1"> 
-  <h1 class = "front-page-title" style = "padding-top:10%">
-    P8105 Final Project - NY Organ Donation 
-  <h1>
-</div> 
-
-<div >
-</br>
-</div>
+Image of Chicago from [4K Wallpapers](https://free4kwallpapers.com/travel-world/chicago-night-wallpaper--XAWv)
