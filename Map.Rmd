@@ -1,0 +1,47 @@
+---
+title : "Map"
+runtime: shiny
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: rows
+    vertical_layout: fill
+    source: embed
+    code_folding: hide
+    theme: flatly
+---
+
+```{r setup}
+library(flexdashboard)
+library(tidyverse)
+library(plotly)
+library(leaflet)
+library(shiny)
+library(httr)
+library(rvest)
+library(sf)
+knitr::opts_chunk$set(
+  message = F,
+  echo = F,
+  warning = F
+)
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+options(
+  ggplot2.continuous.colour = "viridis",
+  ggplot2.continuous.fill = "viridis",
+  digits = 10
+)
+
+```
+
+```{r}
+
+mymap <- leaflet() %>%
+   addTiles( 
+    'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpeg',
+    attribution = 'Tiles Courtesy of <a href="http://www.mapquest.com/">MapQuest</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    ) %>%
+    setView(41.869863, -87.647208, zoom = 13)
+mymap 
+
+```
+
