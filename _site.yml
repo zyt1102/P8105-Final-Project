@@ -8,11 +8,11 @@ navbar:
     - text: "Exploratory Analysis"
       href: exploratory_data.html
     - text: "Data Analysis"
-      href: website_data_page.html
+      href: data_analysis.html
     - text: "Discussion"
       href: discussion.html
     - text: "Report"
-      href: https://github.com/nt-williams/p8105_final_report/blob/master/p8105_final_report.md
+      href: report.html
     - text: "Our Team"
       href: ourteam.html
     - icon: fab fa-youtube
