@@ -25,49 +25,38 @@ body {
 
 <body>
 
-<h1 id="data-clean">Data Clean</h1>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># clean data</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>crime_2016 <span class="ot">=</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2016.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>crime_2017 <span class="ot">=</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2017.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>crime_2018 <span class="ot">=</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2018.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>crime_2019 <span class="ot">=</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2019.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>crime_2020 <span class="ot">=</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2020.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>crime_2021 <span class="ot">=</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>   <span class="fu">read.csv</span>(<span class="st">&quot;./Data/Crimes_-_2021.csv&quot;</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>   <span class="fu">drop_na</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>   janitor<span class="sc">::</span><span class="fu">clean_names</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(arrest<span class="sc">==</span><span class="st">&quot;true&quot;</span>,domestic<span class="sc">==</span><span class="st">&quot;true&quot;</span>)</span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>full_df<span class="ot">=</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>   <span class="fu">do.call</span>(<span class="st">&quot;rbind&quot;</span>,<span class="fu">list</span>(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">date=</span><span class="fu">strptime</span>(date, <span class="st">&quot;%m/%d/%Y %I:%M:%S %p&quot;</span>),</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>      <span class="at">date=</span><span class="fu">as.Date</span>(date,<span class="st">&quot;%Y-%m-%d&quot;</span>),</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>      <span class="at">year =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(date, <span class="at">format =</span> <span class="st">&quot;%Y&quot;</span>)),</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      <span class="at">month =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(date, <span class="at">format =</span> <span class="st">&quot;%m&quot;</span>)),</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">day =</span> <span class="fu">as.numeric</span>(<span class="fu">format</span>(date, <span class="at">format =</span> <span class="st">&quot;%d&quot;</span>))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      ) <span class="sc">%&gt;%</span> </span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>   <span class="fu">relocate</span>(year,month,day,<span class="at">.before =</span> date)</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="fu">write.csv</span>(full_df,<span class="at">file=</span><span class="st">&quot;./Data/data_clean.csv&quot;</span>)</span></code></pre></div>
+<h1 id="map-data">Map Data</h1>
+<p>Yiwen Zhao 12/1/2021</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">read_csv</span>(<span class="st">&quot;/Users/zhao/Desktop/P8105-Final-Project/Crimes_-_Map.csv&quot;</span>)</span></code></pre></div>
+<pre><code>## Rows: 203280 Columns: 17
+
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (11): CASE#, DATE  OF OCCURRENCE, BLOCK, IUCR, PRIMARY DESCRIPTION, SECO...
+## dbl  (6): BEAT, WARD, X COORDINATE, Y COORDINATE, LATITUDE, LONGITUDE
+
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.
+
+## # A tibble: 203,280 × 17
+##    `CASE#`  `DATE  OF OCCURRENCE`  BLOCK IUCR  `PRIMARY DESCRI… `SECONDARY DESC…
+##    &lt;chr&gt;    &lt;chr&gt;                  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;            &lt;chr&gt;           
+##  1 JE266628 06/15/2021 09:30:00 AM 080X… 0820  THEFT            $500 AND UNDER  
+##  2 JE266536 06/15/2021 07:50:00 AM 042X… 0560  ASSAULT          SIMPLE          
+##  3 JE266663 06/15/2021 08:40:00 AM 044X… 1153  DECEPTIVE PRACT… FINANCIAL IDENT…
+##  4 JE267466 06/15/2021 09:01:00 PM 007X… 051B  ASSAULT          AGGRAVATED - OT…
+##  5 JE266473 06/15/2021 07:47:00 AM 062X… 0110  HOMICIDE         FIRST DEGREE MU…
+##  6 JE267222 06/15/2021 01:55:00 AM 015X… 4386  OTHER OFFENSE    VIOLATION OF CI…
+##  7 JE266604 06/15/2021 09:20:00 AM 013X… 0430  BATTERY          AGGRAVATED - OT…
+##  8 JE266568 06/15/2021 01:30:00 AM 055X… 0810  THEFT            OVER $500       
+##  9 JE267023 06/15/2021 03:03:00 PM 082X… 0460  BATTERY          SIMPLE          
+## 10 JE267234 06/15/2021 04:45:00 PM 107X… 0486  BATTERY          DOMESTIC BATTER…
+## # … with 203,270 more rows, and 11 more variables: LOCATION DESCRIPTION &lt;chr&gt;,
+## #   ARREST &lt;chr&gt;, DOMESTIC &lt;chr&gt;, BEAT &lt;dbl&gt;, WARD &lt;dbl&gt;, FBI CD &lt;chr&gt;,
+## #   X COORDINATE &lt;dbl&gt;, Y COORDINATE &lt;dbl&gt;, LATITUDE &lt;dbl&gt;, LONGITUDE &lt;dbl&gt;,
+## #   LOCATION &lt;chr&gt;</code></pre>
 
 </body>
 </html>

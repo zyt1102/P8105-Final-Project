@@ -13,10 +13,10 @@
 
 <title>Exploratory Analysis</title>
 
-<script src="site_libs/header-attrs-2.10/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/flatly.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
@@ -29,7 +29,11 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -59,6 +63,7 @@ if (window.hljs) {
 
 
 
+<link rel="stylesheet" href="index.css" type="text/css" />
 
 
 
@@ -217,7 +222,73 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
 
 
 
@@ -227,6 +298,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -253,13 +334,13 @@ $(document).ready(function () {
   <a href="exploratory_data.html">Exploratory Analysis</a>
 </li>
 <li>
-  <a href="website_data_page.html">Data Analysis</a>
+  <a href="data_analysis.html">Data Analysis</a>
 </li>
 <li>
   <a href="discussion.html">Discussion</a>
 </li>
 <li>
-  <a href="https://github.com/nt-williams/p8105_final_report/blob/master/p8105_final_report.md">Report</a>
+  <a href="report.html">Report</a>
 </li>
 <li>
   <a href="ourteam.html">Our Team</a>
@@ -289,57 +370,44 @@ $(document).ready(function () {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-show-all-code" href="#">Show All Code</a></li>
+<li><a id="rmd-hide-all-code" href="#">Hide All Code</a></li>
+</ul>
+</div>
 
 
-<h1 class="title toc-ignore">Exploratory Analysis</h1>
+
+<h1 class="title toc-ignore"><strong>Exploratory Analysis</strong></h1>
 
 </div>
 
 
-<pre class="r"><code># clean data
-crime_2016 =
-   read.csv(&quot;./Data/Crimes_-_2016.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)
-crime_2017 =
-   read.csv(&quot;./Data/Crimes_-_2017.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)
-crime_2018 =
-   read.csv(&quot;./Data/Crimes_-_2018.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)
-crime_2019 =
-   read.csv(&quot;./Data/Crimes_-_2019.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)
-crime_2020 =
-   read.csv(&quot;./Data/Crimes_-_2020.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)
-crime_2021 =
-   read.csv(&quot;./Data/Crimes_-_2021.csv&quot;) %&gt;% 
-   drop_na() %&gt;% 
-   janitor::clean_names() %&gt;%
-   filter(arrest==&quot;true&quot;,domestic==&quot;true&quot;)</code></pre>
-<pre class="r"><code>full_df=
-   do.call(&quot;rbind&quot;,list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %&gt;% 
-   mutate(
-      date=strptime(date, &quot;%m/%d/%Y %I:%M:%S %p&quot;),
-      date=as.Date(date,&quot;%Y-%m-%d&quot;),
-      year = as.numeric(format(date, format = &quot;%Y&quot;)),
-      month = as.numeric(format(date, format = &quot;%m&quot;)),
-      day = as.numeric(format(date, format = &quot;%d&quot;))
-      ) %&gt;% 
-   relocate(year,month,day,.before = date)</code></pre>
+<div id="trends-in-time" class="section level2">
+<h2><strong>Trends in Time</strong></h2>
+</div>
+<div id="wordclouding-of-crime-type" class="section level2">
+<h2><strong>Wordclouding of crime type</strong></h2>
+<pre class="r"><code>crime = read_csv(&quot;./Data/data_clean.csv&quot;) %&gt;%
+   group_by(primary_type) %&gt;% 
+   summarise(n_cause = n())
+   set.seed(555)
+   wordcloud(words = crime$primary_type, freq = crime$n_cause, scale = c(3, .8), min.freq = 1,
+      max.words=200, random.order=FALSE, rot.per=0.35, 
+      colors=brewer.pal(8, &quot;Dark2&quot;))
+title( &quot;Figure: Wordclouding of the top number of crimes during 6 years&quot;)</code></pre>
+<p><img src="exploratory_data_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+</div>
+<div id="heat-mao" class="section level2">
+<h2><strong>Heat Mao</strong></h2>
+</div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -371,7 +439,41 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeCodeFolding("hide" === "show");
+});
+</script>
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

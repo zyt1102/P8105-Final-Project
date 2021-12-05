@@ -1,83 +1,44 @@
 ---
-title: "Exploratory Analysis"
+title: "**Exploratory Analysis**"
 output: 
-   html_document
+  html_document:
+    toc: true
+    toc_float: true
+    theme:  flatly
+    css: index.css
+    code_folding: hide
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = TRUE,
-	warning = FALSE,
-	fig.width = 8, 
-  fig.height = 6,
-  out.width = "90%"
-)
+```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
-library(leaflet)
-library(lubridate)
-library(ggExtra)
-library(plotly)
-library(maps)
-library(mapdata)
-library(ggthemes)
-library(mapproj)
-library(ggthemes)
-library(gganimate)
-library(viridis)
 library(wordcloud)
-library(RColorBrewer)
-library(tm)
-theme_set(theme_minimal() + theme(legend.position = "bottom"))
 ```
 
 
-
-```{r roughly data cleaning, message = FALSE}
-# clean data
-crime_2016 =
-   read.csv("./Data/Crimes_-_2016.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-crime_2017 =
-   read.csv("./Data/Crimes_-_2017.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-crime_2018 =
-   read.csv("./Data/Crimes_-_2018.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-crime_2019 =
-   read.csv("./Data/Crimes_-_2019.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-crime_2020 =
-   read.csv("./Data/Crimes_-_2020.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-crime_2021 =
-   read.csv("./Data/Crimes_-_2021.csv") %>% 
-   drop_na() %>% 
-   janitor::clean_names() %>%
-   filter(arrest=="true",domestic=="true")
-```
-
-
+## **Trends in Time**
 ```{r}
-full_df=
-   do.call("rbind",list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %>% 
-   mutate(
-      date=strptime(date, "%m/%d/%Y %I:%M:%S %p"),
-      date=as.Date(date,"%Y-%m-%d"),
-      year = as.numeric(format(date, format = "%Y")),
-      month = as.numeric(format(date, format = "%m")),
-      day = as.numeric(format(date, format = "%d"))
-      ) %>% 
-   relocate(year,month,day,.before = date)
+
 ```
 
+
+## **Wordclouding of crime type**
+```{r, warning=FALSE, message=FALSE}
+crime = read_csv("./Data/data_clean.csv") %>%
+   group_by(primary_type) %>% 
+   summarise(n_cause = n())
+   set.seed(555)
+   wordcloud(words = crime$primary_type, freq = crime$n_cause, scale = c(3, .8), min.freq = 1,
+      max.words=200, random.order=FALSE, rot.per=0.35, 
+      colors=brewer.pal(8, "Dark2"))
+title( "Figure: Wordclouding of the top number of crimes during 6 years")
+
+
+```
+ 
+ 
+## **Heat Mao**
+```{r}
+
+```
+
+ 
 
