@@ -10,6 +10,8 @@ output:
     includes:
       after_body: footer.html
 ---
+
+
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
 library(leaflet)

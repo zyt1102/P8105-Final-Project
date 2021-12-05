@@ -11,7 +11,6 @@ output:
       after_body: footer.html
 ---
 
-### **Map: Distribution of Crime Rate From 2016 to 2021 in Chicago**
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -27,22 +26,69 @@ library(magrittr)
 library(readr)
 ```
 
+
+### **Map: Distribution of Crime Rate From 2016 to 2021 in Chicago**
+
 ```{r, message=FALSE}
-#data loading
+crime_2016 =
+   read.csv("./Data/Crimes_-_2016.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
 crime_2017 =
    read.csv("./Data/Crimes_-_2017.csv") %>% 
    drop_na() %>% 
    janitor::clean_names() %>%
    filter(arrest=="true",domestic=="true")
-
-map2017 = crime_2017 %>%
-leaflet() %>%
-addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") %>%
-addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
-addLayersControl(baseGroups = c("Toner Lite", "World Imagery")) %>%
-addMarkers(clusterOptions = markerClusterOptions()) %>%
-setView(-87.646918, 41.869871, zoom = 13)
-
-map2017
+crime_2018 =
+   read.csv("./Data/Crimes_-_2018.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2019 =
+   read.csv("./Data/Crimes_-_2019.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2020 =
+   read.csv("./Data/Crimes_-_2020.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2021 =
+   read.csv("./Data/Crimes_-_2021.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
 ```
 
+
+```{r, message=FALSE}
+full_df=
+   do.call("rbind",list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %>% 
+   mutate(
+      date=strptime(date, "%m/%d/%Y %I:%M:%S %p"),
+      date=as.Date(date,"%Y-%m-%d"),
+      year = as.numeric(format(date, format = "%Y")),
+      month = as.numeric(format(date, format = "%m")),
+      day = as.numeric(format(date, format = "%d"))
+      ) %>% 
+   relocate(year,month,day,.before = date)
+write.csv(full_df,file="./Data/data_clean.csv")
+```
+
+
+```{r, message=FALSE}
+map_full = 
+  full_df %>%
+  leaflet() %>%
+  addProviderTiles(providers$Esri.WorldImagery, group = "World Imagery") %>%
+  addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%
+  addLayersControl(baseGroups = c("Toner Lite", "World Imagery")) %>%
+  addMarkers(clusterOptions = markerClusterOptions()) %>%
+  setView(-87.646918, 41.869871, zoom = 16)
+
+map_full
+```
+
+**Description: **As the map shows, we found that crimes centrally happened in the middle and south of Chicago, with over 20.000 crimes respectively. The amount of crimes in north district was the least but still summed up to 5,000 in the last 5 years. Thus, it is fairly enough to conclude that the middle and south districts are comparatively more dangerous while the north is safer although its number of crimes still shocked.
