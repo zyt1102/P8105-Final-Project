@@ -4,9 +4,9 @@ navbar:
   title: "Home"
   right:
     - text: "Overview"
-      href: interesting_finding.html
+      href: overview.html
     - text: "Exploratory Analysis"
-      href: website_explore_page.html
+      href: exploratory_data.html
     - text: "Data"
       href: website_data_page.html
     - text: "Report"
@@ -18,7 +18,7 @@ navbar:
     - icon: fa-envelope fa-lg
       href: mailto:zyt1102@cumc.columbia.edu
     - icon: fa-github fa-lg
-      href: http://github.com/zyt1102/p8105_final_project
+      href: https://github.com/zyt1102/P8105-Final-Project
     - text: "Shiny"
       href: https://sijiayue.shinyapps.io/shinny_heatmap/
 output:

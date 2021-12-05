@@ -1,0 +1,35 @@
+---
+title: "**Overview**"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    theme:  flatly
+    css: index.css
+---
+  
+## **Motivation**
+  
+  Due to the cases that happened in Chicago recently, the crime rates in different areas of Chicago caught our attention. Violent incidents in Chicago are of increasing concern over the last few years, and we are interested in looking at what might be associated with increased violence in Chicago. We are concerned about people’s living safety in the city and motivated to find safer neighborhoods for living in Chicago.
+
+
+## **Data Source**
+
+* 6-year Chicago crime data records (2016 - 2021):
+  - [2016](https://data.cityofchicago.org/Public-Safety/Crimes-2016/kf95-mnd6/data)
+  - [2017](https://data.cityofchicago.org/Public-Safety/Crimes-2017/d62x-nvdr/data)
+  - [2018](https://data.cityofchicago.org/Public-Safety/Crimes-2018/3i3m-jwuy/data)
+  - [2019](https://data.cityofchicago.org/Public-Safety/Crimes-2019/w98m-zvie/data)
+  - [2020](https://data.cityofchicago.org/Public-Safety/Crimes-2020/qzdf-xmn8/data)
+  - [2021](https://data.cityofchicago.org/Public-Safety/Crimes-2021/dwme-t96c/data)
+
+* Chicago Data Portal
+
+
+
+## **Research Question**
+
+## **Main Results**
+
+## **Conclusion**
+

@@ -11,7 +11,7 @@
 
 
 
-<title>index.knit</title>
+<title>Overview</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -29,6 +29,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -221,6 +224,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -228,6 +294,16 @@ $(document).ready(function () {
 
 
 <div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
 
 
 
@@ -275,7 +351,7 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="https://github.com/zyt1102/P8105-Final-Project">
+  <a href="http://github.com/zyt1102/p8105_final_project">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
@@ -292,22 +368,44 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore"><center>
-<strong>Gotham City</strong>
-<center/></h1>
+<h1 class="title toc-ignore"><strong>Overview</strong></h1>
 
 </div>
 
 
-<center>
-<div id="group-members-shengzhi-luo-minxiu-shi-yitian-zhang-yiwen-zhao" class="section level5">
-<h5><strong>Group members: Shengzhi Luo, Minxiu Shi, Yitian Zhang, Yiwen Zhao</strong></h5>
-<p><img src="images/Chicago2.jpg" style="width:90%"></p>
-<p>Image of Chicago from <a href="https://free4kwallpapers.com/travel-world/chicago-night-wallpaper--XAWv">4K Wallpapers</a></p>
+<div id="motivation" class="section level2">
+<h2><strong>Motivation</strong></h2>
+<p>Due to the cases that happened in Chicago recently, the crime rates in different areas of Chicago caught our attention. Violent incidents in Chicago are of increasing concern over the last few years, and we are interested in looking at what might be associated with increased violence in Chicago. We are concerned about people’s living safety in the city and motivated to find safer neighborhoods for living in Chicago.</p>
+</div>
+<div id="data-source" class="section level2">
+<h2><strong>Data Source</strong></h2>
+<ul>
+<li>6-year Chicago crime data records (2016 - 2021):
+<ul>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2016/kf95-mnd6/data">2016</a></li>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2017/d62x-nvdr/data">2017</a></li>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2018/3i3m-jwuy/data">2018</a></li>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2019/w98m-zvie/data">2019</a></li>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2020/qzdf-xmn8/data">2020</a></li>
+<li><a href="https://data.cityofchicago.org/Public-Safety/Crimes-2021/dwme-t96c/data">2021</a></li>
+</ul></li>
+<li>Chicago Data Portal</li>
+</ul>
+</div>
+<div id="research-question" class="section level2">
+<h2><strong>Research Question</strong></h2>
+</div>
+<div id="main-results" class="section level2">
+<h2><strong>Main Results</strong></h2>
+</div>
+<div id="conclusion" class="section level2">
+<h2><strong>Conclusion</strong></h2>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -340,6 +438,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>
