@@ -72,7 +72,12 @@ full_df=
    do.call("rbind",list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %>% 
    mutate(
       date=strptime(date, "%m/%d/%Y %I:%M:%S %p"),
-      date=as.Date(date,"%Y-%m-%d")
-   )
+      date=as.Date(date,"%Y-%m-%d"),
+      year = as.numeric(format(date, format = "%Y")),
+      month = as.numeric(format(date, format = "%m")),
+      day = as.numeric(format(date, format = "%d"))
+      ) %>% 
+   relocate(year,month,day,.before = date)
 ```
+
 

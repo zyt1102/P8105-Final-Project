@@ -247,19 +247,22 @@ $(document).ready(function () {
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="interesting_finding.html">Overview</a>
+  <a href="overview.html">Overview</a>
 </li>
 <li>
-  <a href="website_explore_page.html">Exploratory Analysis</a>
+  <a href="exploratory_data.html">Exploratory Analysis</a>
 </li>
 <li>
-  <a href="website_data_page.html">Data</a>
+  <a href="website_data_page.html">Data Analysis</a>
+</li>
+<li>
+  <a href="discussion.html">Discussion</a>
 </li>
 <li>
   <a href="https://github.com/nt-williams/p8105_final_report/blob/master/p8105_final_report.md">Report</a>
 </li>
 <li>
-  <a href="website_data_page.html">Our Team</a>
+  <a href="ourteam.html">Our Team</a>
 </li>
 <li>
   <a href="website_screen_cast.html">
@@ -274,13 +277,10 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="http://github.com/zyt1102/p8105_final_project">
+  <a href="https://github.com/zyt1102/P8105-Final-Project">
     <span class="fa fa-github fa-lg"></span>
      
   </a>
-</li>
-<li>
-  <a href="https://sijiayue.shinyapps.io/shinny_heatmap/">Shiny</a>
 </li>
       </ul>
     </div><!--/.nav-collapse -->
@@ -331,8 +331,12 @@ crime_2021 =
    do.call(&quot;rbind&quot;,list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %&gt;% 
    mutate(
       date=strptime(date, &quot;%m/%d/%Y %I:%M:%S %p&quot;),
-      date=as.Date(date,&quot;%Y-%m-%d&quot;)
-   )</code></pre>
+      date=as.Date(date,&quot;%Y-%m-%d&quot;),
+      year = as.numeric(format(date, format = &quot;%Y&quot;)),
+      month = as.numeric(format(date, format = &quot;%m&quot;)),
+      day = as.numeric(format(date, format = &quot;%d&quot;))
+      ) %&gt;% 
+   relocate(year,month,day,.before = date)</code></pre>
 
 
 
