@@ -1,0 +1,23 @@
+---
+title: "Gotham City"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+---
+
+<img src="images/Chicago.jpg" style="width:90%">
+
+### Motivation
+
+    Due to the cases that happened in Chicago recently, the crime rates in different areas of Chicago caught our attention. Violent incidents in Chicago are of increasing concern over the last few years, and we are interested in looking at what might be associated with increased violence in Chicago. We are concerned about people’s living safety in the city and motivated to find safer neighborhoods for living in Chicago.
+
+<div class="cd-fixed-bg cd-fixed-bg--1"> 
+  <h1 class = "front-page-title" style = "padding-top:10%">
+    P8105 Final Project - NY Organ Donation 
+  <h1>
+</div> 
+
+<div >
+</br>
+</div>
