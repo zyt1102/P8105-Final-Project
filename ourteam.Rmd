@@ -6,6 +6,8 @@ output:
     toc_float: true
     theme:  flatly
     css: index.css
+    includes:
+      after_body: footer.html
 ---
 
 ## **Members:**

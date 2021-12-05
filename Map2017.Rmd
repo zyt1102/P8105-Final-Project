@@ -7,6 +7,8 @@ output:
     theme:  flatly
     css: index.css
     code_folding: hide
+    includes:
+      after_body: footer.html
 ---
 
 ### **Map: Distribution of Crime Rate From 2016 to 2021 in Chicago**

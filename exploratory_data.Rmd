@@ -7,6 +7,8 @@ output:
     theme:  flatly
     css: index.css
     code_folding: hide
+    includes:
+      after_body: footer.html
 ---
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -14,13 +16,13 @@ library(wordcloud)
 ```
 
 
-## **Trends in Time**
+### **Trends in Time**
 ```{r}
 
 ```
 
 
-## **Wordclouding of crime type**
+### **Word clouding of crime type**
 ```{r, warning=FALSE, message=FALSE}
 crime = read_csv("./Data/data_clean.csv") %>%
    group_by(primary_type) %>% 
@@ -35,7 +37,7 @@ title( "Figure: Wordclouding of the top number of crimes during 6 years")
 ```
  
  
-## **Heat Mao**
+### **Heat Map**
 ```{r}
 
 ```

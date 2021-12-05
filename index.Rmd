@@ -4,6 +4,8 @@ output:
   html_document:
     theme:  flatly
     css: index.css
+    includes:
+      after_body: footer.html
 ---
 <center>
 
