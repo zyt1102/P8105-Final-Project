@@ -164,11 +164,11 @@ anim_plot = staticplot +
   labs(title = 'Number of Crime in Chicago from 2016 to 2021 : {closest_state}',
        subtitle = "Top 10 Location")  
 
-animate(anim_plot, 200, fps = 15,  width = 780, height = 560)
-anim_save("anim.gif")
+animate(anim_plot, 150, fps = 100,  width = 780, height = 560)
+
 ```
 
-
+<img src="./anim.gif" style="width:90%">
 
 
 
