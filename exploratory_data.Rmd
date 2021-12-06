@@ -116,7 +116,7 @@ title( "Figure 3: Wordclouding of the top number of crimes during 6 years")
  
 ### **Trends in Location**
 #### **The Number of Crimes Happens in Different Locations Over Six Years**
-```{r}
+```{r, warning=FALSE}
 ## clean a new dataset with ranking of numbers and adjusted numbers
 crime_loc = read.csv("./Data/data_clean.csv") %>%
   group_by(year,location_description) %>% 
@@ -125,9 +125,7 @@ crime_loc = read.csv("./Data/data_clean.csv") %>%
          Value_rel = n/n[rank == 1],
          Value_lbl = paste0(" ",n)) %>% 
   filter(rank <= 10)
-```
 
-```{r}
 ## form multiple static plots
 staticplot = ggplot(crime_loc, aes(rank, group = location_description, 
                 fill = as.factor(location_description), color = as.factor(location_description))) +
@@ -158,9 +156,7 @@ staticplot = ggplot(crime_loc, aes(rank, group = location_description,
         plot.subtitle = element_text(size = 18, hjust = 0.5, face = "italic", color = "grey"),
         plot.background = element_blank(),
         plot.margin = margin(2,2, 2, 4, "cm"))
-```
 
-```{r}
 ## convert static plots to animated ones
 anim_plot = staticplot + 
   transition_states(year, transition_length = 4, state_length = 1) +
