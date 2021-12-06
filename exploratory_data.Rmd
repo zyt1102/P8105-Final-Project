@@ -113,7 +113,7 @@ title( "Figure 3: Wordclouding of the top number of crimes during 6 years")
 ```
  
  
- 
+
 ### **Trends in Location**
 #### **The Number of Crimes Happens in Different Locations Over Six Years**
 ```{r, warning=FALSE}
@@ -152,7 +152,7 @@ staticplot = ggplot(crime_loc, aes(rank, group = location_description,
         panel.grid.minor = element_blank(),
         panel.grid.major.x = element_line( size = .1, color = "grey" ),
         panel.grid.minor.x = element_line( size = .1, color = "grey" ),
-        plot.title = element_text(size = 25, hjust = 0.5, face = "bold", vjust = 2),
+        plot.title = element_text(size = 23, hjust = 0.5, face = "bold", vjust = 2),
         plot.subtitle = element_text(size = 18, hjust = 0.5, face = "italic", color = "grey"),
         plot.background = element_blank(),
         plot.margin = margin(2,2, 2, 4, "cm"))
@@ -164,7 +164,7 @@ anim_plot = staticplot +
   labs(title = 'Number of Crime in Chicago from 2016 to 2021 : {closest_state}',
        subtitle = "Top 10 Location")  
 
-animate(anim_plot, 200, fps = 15,  width = 680, height = 560)
+animate(anim_plot, 200, fps = 15,  width = 780, height = 560)
 anim_save("anim.gif")
 ```
 
