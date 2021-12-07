@@ -21,7 +21,9 @@ output:
   [News Source](https://blockclubchicago.org/2021/11/15/man-charged-with-murder-in-killing-of-uchicago-graduate-in-hyde-park/)
   
 ## **Data**
+
 #### **Data Source**
+
 6-year Chicago Crime data records are retrieved from Chicago’s official public data [Chicago Data Portal](https://data.cityofchicago.org). 
 
 * 6-year Chicago crime data records (2016 - 2021):
@@ -38,9 +40,16 @@ This dataset reflects reported incidents of crime (with the exception of murders
 
 #### **Data Description**
 
-
-
-
+The resulting data file of `data_clean` contains 45498 criminal records and 24 variables.
+The list below is the description of our interested variables:
+ 
+ * `data`. The date of occurrence of crime.
+ * `block`. The block where the crime occurred.
+ * `primary_type`. The primary description of crime.
+ * `description`. Detail description to the crime.
+ * `location decription`. Detail description about where the crime occurred.
+ * `latitude`. The latitude of occurrence of crime.
+ * `longitude`. The longitude of occurrence of crime.
 
 ## **Research Question**
 
