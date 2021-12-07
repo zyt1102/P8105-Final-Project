@@ -8,7 +8,7 @@ navbar:
     - text: "Exploratory Analysis"
       href: exploratory_data.html
     - text: "Map"
-      href: map2017.html
+      href: Map2017.html
     - text: "Additional Analysis"
       href: additional_analysis.html
     - text: "Report"
