@@ -11,6 +11,7 @@ output:
       after_body: footer.html
 ---
 
+<p align="center">
 
 ```{r, echo=FALSE, message=FALSE}
 library(tidyverse)
@@ -227,5 +228,5 @@ animate(anim_plot2, 150, fps = 100,  width = 780, height = 560)
 anim_save("anim_plot2.gif")
 ```
 
- 
+</p> 
 

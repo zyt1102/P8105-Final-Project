@@ -6,19 +6,49 @@ output:
     toc_float: true
     theme:  flatly
     css: index.css
+    code_folding: hide
     includes:
       after_body: footer.html
 ---
-  
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	warning = FALSE,
+	fig.width = 8, 
+  fig.height = 6,
+  out.width = "90%"
+)
+#install.packages("DT")
+library(DT)
+library(tidyverse)
+library(leaflet)
+library(lubridate)
+library(ggExtra)
+library(plotly)
+library(maps)
+library(mapdata)
+library(ggthemes)
+library(mapproj)
+library(ggthemes)
+library(gganimate)
+library(viridis)
+library(wordcloud)
+library(RColorBrewer)
+library(tm)
+theme_set(theme_minimal() + theme(legend.position = "bottom"))
+```
+
+<p align="center">
+
 ## **Motivation**
   
   Due to the cases that happened in Chicago recently, the crime rates in different areas of Chicago caught our attention. Violent incidents in Chicago are of increasing concern over the last few years, and we are interested in looking at what might be associated with increased violence in Chicago. We are concerned about people’s living safety in the city and motivated to find safer neighborhoods for living in Chicago.
 
 ## **Related work**
 
-  Apart from that, news came that Zheng, a 24-year-old native of of China’s Sichuan province, was shot and killed on November 9th during a robbery in the 900 block of East 54th Place, which was in the vicinity of University of Chicago's campus. As his compatriots, we were all overwhelmed by unbearable sorrow and loss. And such tragedies kept occuring every now and then. Therefore, our concern towards the crimes in Chicago grew.
-  
-  [News Source](https://blockclubchicago.org/2021/11/15/man-charged-with-murder-in-killing-of-uchicago-graduate-in-hyde-park/)
+Apart from that, news came that Zheng, a 24-year-old native of of China’s Sichuan province, was shot and killed on November 9th during a robbery in the 900 block of East 54th Place, which was in the vicinity of University of Chicago's campus. As his compatriots, we were all overwhelmed by unbearable sorrow and loss. And such tragedies kept occuring every now and then. Therefore, our concern towards the crimes in Chicago grew. 
+Here is the link to the [News Source](https://blockclubchicago.org/2021/11/15/man-charged-with-murder-in-killing-of-uchicago-graduate-in-hyde-park/).
   
 ## **Data**
 
@@ -38,6 +68,65 @@ This dataset reflects reported incidents of crime (with the exception of murders
 
 #### **Data Processing and Clean**
 
+First we eliminated some variables that we were not interested in. Then, since each year's criminal records are contained in a separate dataset respectively, we created a tidy dataframe containing all criminal records from 2016 to 2021. Also, since our analysis will include some predictions for trend, we split variable "data" and composed new variables as "year","month", and "day" respectively to facilitate our analysis of trends for each year. Here is our data process:
+
+```{r roughly data cleaning, message = FALSE}
+# clean data
+crime_2016 =
+   read.csv("./Data/Crimes_-_2016.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2017 =
+   read.csv("./Data/Crimes_-_2017.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2018 =
+   read.csv("./Data/Crimes_-_2018.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2019 =
+   read.csv("./Data/Crimes_-_2019.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2020 =
+   read.csv("./Data/Crimes_-_2020.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+crime_2021 =
+   read.csv("./Data/Crimes_-_2021.csv") %>% 
+   drop_na() %>% 
+   janitor::clean_names() %>%
+   filter(arrest=="true",domestic=="true")
+
+full_df=
+   do.call("rbind",list(crime_2016,crime_2017,crime_2018,crime_2019,crime_2020,crime_2020,crime_2021)) %>% 
+   mutate(
+      date=strptime(date, "%m/%d/%Y %I:%M:%S %p"),
+      date=as.Date(date,"%Y-%m-%d"),
+      year = as.numeric(format(date, format = "%Y")),
+      month = as.numeric(format(date, format = "%m")),
+      day = as.numeric(format(date, format = "%d"))
+      ) %>% 
+   relocate(year,month,day,.before = date)
+write.csv(full_df,file="./Data/data_clean.csv")
+```
+
+The part of resulting data `data_clean` used for analysis can be viewed below.
+
+```{r echo=FALSE, }
+show_data = read.csv("./Data/data_clean.csv")
+datatable(head(show_data,20), rownames = FALSE, filter = "top", 
+          options = list(pageLength = 5, scrollX = T, lengthMenu = c(5, 10, 15, 20))
+
+```
+
+
+     
 #### **Data Description**
 
 The resulting data file of `data_clean` contains 45498 criminal records and 24 variables.
@@ -59,3 +148,4 @@ Question 1:
 
 ## **Conclusion**
 
+</p>
